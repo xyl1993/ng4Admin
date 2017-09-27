@@ -1,6 +1,7 @@
-import { Component,Input,Output,EventEmitter,OnChanges,SimpleChanges } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 
 declare var jQuery:any;  //定义jquery
+
 @Component({
   selector: 'twbs-pagination',
   templateUrl: './twbs-pagination.component.html',
@@ -11,18 +12,13 @@ export class TwbsPagination {
   // 当改变了选择时给父组件发送事件
   @Output() selectPage:EventEmitter<number> = new EventEmitter();
 
-  @Input() ifInit: boolean;  //其值等于在父模板中绑定变量的值(是否是初始化)
+  private itemsPerPage = 10;
 
-  constructor() {
-  }
-  ngOnInit(): void {
-    console.log(this.ifInit);
-  }
-  ngOnChanges(changes: SimpleChanges):void{
-  }
+  constructor() {}
 
-  initPagination(pages):void{
+  initPagination(totalItems):void{
       var _this = this;
+      var pages = _this.calculateTotalPages(totalItems);
       jQuery('#pagination-demo').twbsPagination({
           totalPages: pages,
           visiblePages: 7,
@@ -32,9 +28,13 @@ export class TwbsPagination {
           next: '下一页',
           last: '末页',
           onPageClick: function (event, page) {
-            console.log(1);
-            // _this.selectPage.emit(page);
+            _this.selectPage.emit(page);
           }
       });
+  }
+
+  calculateTotalPages(totalItems){
+    var totalPages = this.itemsPerPage < 1 ? 1 : Math.ceil(totalItems / this.itemsPerPage);
+    return Math.max(totalPages || 0, 1);
   }
 }
