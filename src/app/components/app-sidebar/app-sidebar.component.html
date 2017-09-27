@@ -1,0 +1,45 @@
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+      </li>
+      <li class="divider"></li>
+      <li class="nav-title">
+        UI Elements
+      </li>
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown  *ngFor="let list of sidebarList;let i = index;">
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
+          <i [ngClass]="list.icon"></i> {{list.title}}
+        </a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item" *ngFor="let submenu of list.submenu;">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="[submenu.url]">
+              <i class="icon-google"></i> {{submenu.title}}</a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="nav-title">
+        Extras
+      </li>
+      <li class="nav-item nav-dropdown" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-star"></i> Pages</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/login']"><i class="icon-star"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/register']"><i class="icon-star"></i> Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/404']"><i class="icon-star"></i> Error 404</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
