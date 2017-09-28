@@ -9,3 +9,31 @@
     top: 7px;
     left: 1.25rem;
 }
+.form-title{
+    border-bottom: 1px dotted #E2E2E2;
+    margin-bottom: 20px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    transition: all 0.15s ease-in-out;
+    h1{
+        font-size: 24px;
+        font-weight: lighter;
+        color: #2679B5;
+    }
+}
+.form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+}
+.red{
+    color: #DD5A43 !important;
+}
+.my-row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}

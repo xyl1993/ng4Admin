@@ -17,7 +17,7 @@ export const routes: Routes = [
     path: '',
     component: FullLayout,
     data: {
-      title: 'Home'
+      title: '首页'
     },
     children: [
       {

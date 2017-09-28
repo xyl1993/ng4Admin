@@ -27,6 +27,7 @@
     "@angular/upgrade": "4.3.6",
     "chart.js": "2.6.0",
     "core-js": "2.5.0",
+    "icheck": "^1.0.2",
     "jquery": "^3.2.1",
     "md5-es": "^1.8.1",
     "moment": "2.18.1",

@@ -13,7 +13,7 @@ export class ListComponent {
   @ViewChild(TwbsPagination) pagination: TwbsPagination;
   
   //分页对象,判断是否需要初始化对象
-   paginatinEmit={
+  paginatinEmit={
     ifInit:true
   };
   

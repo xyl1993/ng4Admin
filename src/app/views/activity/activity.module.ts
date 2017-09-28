@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { ListComponent } from './list.component';
+import { EditComponent } from './edit.component';
 import {TwbsPagination} from '../../components';
 import {AppServer} from "../../util/app.server";
 @NgModule({
@@ -25,6 +26,7 @@ import {AppServer} from "../../util/app.server";
   ],
   declarations: [
     ListComponent,
+    EditComponent,
     TwbsPagination
   ],
   providers:[

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ListComponent } from './list.component';
+import { EditComponent } from './edit.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,13 @@ const routes: Routes = [
         component: ListComponent,
         data: {
           title: '发起的活动'
+        }
+      },
+      {
+        path: 'edit',
+        component: EditComponent,
+        data: {
+          title: '发起活动'
         }
       }
     ]
