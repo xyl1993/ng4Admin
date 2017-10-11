@@ -1,0 +1,20 @@
+export const signOptionList = [
+    {
+        name:'姓名',
+        value:0,
+        disabled:true,
+        checked:true
+    },
+    {
+        name:'手机',
+        value:1,
+        disabled:true,
+        checked:true
+    },
+    {
+        name:'性别',
+        value:2,
+        disabled:false,
+        checked:false
+    },
+]

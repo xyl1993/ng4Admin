@@ -1,6 +1,8 @@
 export const config =  {
     token : "EoNAuKmc34wpj9cTYKK1dVE3yE8=",
-    pageSize : 10,
+    segmentSize : 10,
+    currentPage:1,
+    startFrom : 1,
     base_api_host:"/SignManage",               //http://192.168.60.136:8080/platform
     custom_master_id:[1,464,128],//定制菜单显示人的ID集合
     role_fun:[
@@ -31,6 +33,12 @@ export const config =  {
             "url": "activity",
             "level-1": true,
             "submenu": [
+                {
+                    "url": "/activity/edit",
+                    "title": "发起活动",
+                    "name": "activity.edit",
+                    "level-2": true
+                },
                 {
                     "url": "/activity/list",
                     "title": "发起的活动",

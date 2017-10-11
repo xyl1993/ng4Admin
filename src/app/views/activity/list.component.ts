@@ -1,8 +1,11 @@
-import { Component,ViewChild, } from '@angular/core';
-import {TwbsPagination} from '../../components';
+import { Component,ViewChild,ViewContainerRef } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+// import { SharkModule } from '@ntesmail/shark-angular2';
+// import {TwbsPagination} from '../../components';
 
 import {ListService} from './list.service';
 
+import {config} from '../../global/config';
 @Component({
   templateUrl: 'list.component.html',
   providers: [ListService],
@@ -10,41 +13,50 @@ import {ListService} from './list.service';
 export class ListComponent {
 
   //向分页组件传递消息
-  @ViewChild(TwbsPagination) pagination: TwbsPagination;
+  // @ViewChild(TwbsPagination) pagination: TwbsPagination;
   
   //分页对象,判断是否需要初始化对象
-  paginatinEmit={
-    ifInit:true
-  };
+  // paginatinEmit={
+  //   ifInit:true
+  // };
   
+  private admin = JSON.parse(sessionStorage.getItem('admin'));
+
   public acvityList = [];
 
-  constructor(public listService: ListService) { }
+  public pagination = {
+    segmentSize:config.segmentSize,
+    currentPage:config.currentPage,
+    totalPage:0
+  }
+
+  constructor(public toastr: ToastsManager,vcr: ViewContainerRef,public listService: ListService) { 
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit():void{
-    this.getInfoList(1);
+    let initObj = {
+      data:{
+        page:1
+      }
+    }
+    this.getInfoList(initObj);
   }
 
   // 事件处理函数
-  getInfoList(currentPage) {
+  getInfoList(e) {
     let _this = this;
-    let param = "currentPage=1&sysId=45&keyword=";
+    let param = 'currentPage='+e.data.page+'&sysId='+_this.admin.id+'&keyword=';
     _this.listService.list(param).then((res)=>{
       if(res.code === 200){
         _this.acvityList = res.data.list;
         //初始化分页插件
-        _this.initPagination(res.data.totalCount);
+        _this.pagination.totalPage = res.data.totalPage;
       }
     })
-    
   }
-  initPagination(totalCount){
-    var _this = this;
-    if(_this.paginatinEmit.ifInit){
-      _this.paginatinEmit = {
-        ifInit:false
-      };
-      _this.pagination.initPagination(totalCount);
-    }
+
+  showSuccess() {
+    this.toastr.success('You are awesome!', 'Success!');
   }
 }

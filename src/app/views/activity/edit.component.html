@@ -68,7 +68,40 @@
                 <span class="red">*</span>报名填写项
             </label>
             <div class="col-sm-8">
-                <input type="checkbox" name="quux[1]">
+                <label class="middle checkbox-lab" *ngFor="let item of signOptionList;">
+                    <input class="ace" type="checkbox" name="signOptions" [checked]="item.checked" [disabled]="item.disabled">
+                    <span class="lbl">
+                        {{item.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 control-label"> 
+                <span class="red">*</span>报名提醒
+            </label>
+            <div class="col-sm-8">
+                <label class="middle checkbox-lab">
+                    <input class="ace" type="radio" checked name="recommend" value ="1" >
+                    <span class="lbl">提醒</span>
+                </label>
+                <label class="middle checkbox-lab">
+                    <input class="ace" type="radio" name="recommend" value ="2" >
+                    <span class="lbl">不提醒</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 control-label"> 
+                <span class="red">*</span>活动详情
+            </label>
+            <div class="col-sm-8">
+                <ckeditor
+                    name = "ck"
+                    [(ngModel)]="ckeditorContent"
+                    [readonly]="false"
+                    debounce="500">
+                </ckeditor>
             </div>
         </div>
     </form>

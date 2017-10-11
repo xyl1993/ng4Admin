@@ -25,6 +25,7 @@
         <div class=" row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-success float-right">提交</button>
+                <button (click)="showSuccess();">成功</button>
             </div>
         </div>
     </div>
@@ -57,7 +58,15 @@
                             </tr>
                         </tbody>
                     </table>
-                    <twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>
+                    <div class="pagination-box" shark-pager 
+                        [gopage] = false
+                        [currentPage]="pagination.currentPage" 
+                        [segmentSize]="pagination.segmentSize"
+                        [totalPage]="pagination.totalPage" 
+                        (onPageChanged)="getInfoList($event);" 
+                    >
+                    </div>
+                    <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
                 </div>
             </div>
         </div>
