@@ -3,7 +3,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import {ActivityService} from './activity.service';
 
 import {config} from '../../global/config';
-
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { zhCn } from 'ngx-bootstrap/locale';
 @Component({
@@ -27,6 +27,7 @@ export class EntryComponent {
   }
 
   ngOnInit():void{
+    defineLocale('zh-cn',zhCn);
     this.bsConfig = Object.assign({}, {locale: this.locale});
     let initObj = {
       data:{
