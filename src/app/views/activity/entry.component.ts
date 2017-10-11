@@ -1,25 +1,19 @@
 import { Component,ViewChild,ViewContainerRef } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
 import {ActivityService} from './activity.service';
 
 import {config} from '../../global/config';
+
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { zhCn } from 'ngx-bootstrap/locale';
 @Component({
-  templateUrl: 'list.component.html',
+  templateUrl: 'entry.component.html',
   providers: [ActivityService],
 })
-export class ListComponent {
-
-  //向分页组件传递消息
-  // @ViewChild(TwbsPagination) pagination: TwbsPagination;
-  
-  //分页对象,判断是否需要初始化对象
-  // paginatinEmit={
-  //   ifInit:true
-  // };
-  
+export class EntryComponent {
   private admin = JSON.parse(sessionStorage.getItem('admin'));
-
+  locale = 'zh-cn';
+  bsConfig: Partial<BsDatepickerConfig>;
   public acvityList = [];
 
   public pagination = {
@@ -33,6 +27,7 @@ export class ListComponent {
   }
 
   ngOnInit():void{
+    this.bsConfig = Object.assign({}, {locale: this.locale});
     let initObj = {
       data:{
         page:1
@@ -45,7 +40,7 @@ export class ListComponent {
   getInfoList(e) {
     let _this = this;
     let param = 'currentPage='+e.data.page+'&sysId='+_this.admin.id+'&keyword=';
-    _this.activityService.selectActivityList(param).then((res)=>{
+    _this.activityService.selectActivityEntry(param).then((res)=>{
       if(res.code === 200){
         _this.acvityList = res.data.list;
         //初始化分页插件
@@ -54,7 +49,4 @@ export class ListComponent {
     })
   }
 
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
-  }
 }

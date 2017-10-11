@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SharkModule } from '@ntesmail/shark-angular2';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 // Components Routing
 import { ActivityRoutingModule } from './activity-routing.module';
@@ -16,7 +16,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ListComponent } from './list.component';
 import { EditComponent } from './edit.component';
-import {TwbsPagination} from '../../components';
+import { EntryComponent } from './entry.component';
 import {AppServer} from "../../util/app.server";
 @NgModule({
   imports: [
@@ -24,6 +24,7 @@ import {AppServer} from "../../util/app.server";
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     ToastModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     TabsModule,
     HttpModule,
     CommonModule,
@@ -34,7 +35,7 @@ import {AppServer} from "../../util/app.server";
   declarations: [
     ListComponent,
     EditComponent,
-    TwbsPagination
+    EntryComponent
   ],
   providers:[
     AppServer

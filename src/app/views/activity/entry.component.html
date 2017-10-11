@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="card-header">
+        <strong>搜索</strong>
+    </div>
+    <div class="card-block">
+        <div class="form-group row">
+            <div class="col-md-3 liner-input">
+                <span class="form-lab">开始时间:</span>
+                <input placeholder="Datepicker" 
+                  type="text"
+                  class="form-control"
+                  bsDatepicker
+                  #dp="bsDatepicker"
+                  [bsConfig]="bsConfig"
+                >
+            </div>
+            <div class="col-md-3 liner-input">
+                <span class="form-lab">结束时间:</span>
+                <input class="form-control" type="text">
+            </div>
+            <div class="col-md-3 liner-input">
+                <span class="form-lab">活动名称:</span>
+                <input class="form-control" type="text">
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary float-left">提交</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>活动列表</strong>    
+                </div>
+                <div class="card-block">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="center">序号</th>
+                                <th class="center">活动名称</th>
+                                <th class="center">活动类型</th>
+                                <th class="center">报名人数</th>
+                                <th class="center">活动开始时间</th>
+                                <th class="center">活动结束时间</th>
+                                <th class="center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of acvityList;index as i">
+                                <td class="center">{{i+1}}</td>
+                                <td class="center">{{item.title}}</td>
+                                <td class="center">{{item.type}}</td>
+                                <td class="center">{{item.number}}</td>
+                                <td class="center">
+                                    <span class="tag tag-success">{{item.beginTime|date:'yyyy-MM-dd hh:mm'}}</span>
+                                </td>
+                                <td class="center">
+                                    <span class="tag tag-success">{{item.endTime|date:'yyyy-MM-dd hh:mm'}}</span>
+                                </td>
+                                <td class="center">
+                                    <button class="btn btn-sm btn-success" title="查看奖项">
+                                        <i class="icon-social-dropbox"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" title="签到二维码">
+                                        <i class="fa fa-qrcode"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-box" shark-pager 
+                        [gopage] = false
+                        [currentPage]="pagination.currentPage" 
+                        [segmentSize]="pagination.segmentSize"
+                        [totalPage]="pagination.totalPage" 
+                        (onPageChanged)="getInfoList($event);" 
+                    >
+                    </div>
+                    <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
+                </div>
+            </div>
+        </div>
+        <!--/col-->
+    </div>
