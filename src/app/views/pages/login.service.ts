@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions,URLSearchParams } from '@angular/http';
-import { config } from '../../global/config';
+import { apiConfig } from '../../global/apiConfig';
 import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/toPromise';
@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http: Http) { }
 
   public login(param:String) {
-    return this.http.post(config.base_api_host+'/account/login'+param,{
+    return this.http.post(apiConfig.base_api_host+'/account/login'+param,{
         headers:this.headers
     })
     .toPromise()

@@ -1,8 +1,14 @@
 .m-b-20{
     margin-bottom: 20px;
 }
+.p-r-27{
+    padding-right: 27px;
+}
 .liner-input{
     padding-left: 91px;
+}
+.height-full{
+    height: 100%;
 }
 .center, .align-center {
     text-align: center !important;
@@ -49,6 +55,8 @@
     padding-top: 7px;
     width: 80px;
 }
+
+//aceadmin 组件
 input[type=checkbox].ace,
 input[type=radio].ace
 {
@@ -122,4 +130,110 @@ input[type=radio].ace.disabled + .lbl::before{
     border-color: #CCC !important;
     box-shadow: none !important;
     color: #fff;
+}
+.ace-file-input {
+    display: block;
+    font-size: inherit;
+    position: relative;
+    height: 30px;
+    input[type=file] {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    .ace-loading{
+        position: absolute;
+        z-index: 2;
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        line-height: 33px;
+        padding-left: 8px;
+    }
+}
+.ace-file-input .ace-file-container{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #FFF;
+    border: 1px solid #D5D5D5;
+    cursor: pointer;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all 0.15s;
+    -o-transition: all 0.15s;
+    transition: all 0.15s;
+    &::before{
+        display: inline-block;
+        content: attr(data-title);
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        line-height: 24px;
+        text-align: center;
+        padding: 0 8px;
+        background-color: #6FB3E0;
+        color: #FFF;
+        font-size: 11px;
+        font-weight: bold;
+        border: 2px solid #FFF;
+        border-left-width: 4px;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    .ace-file-name{
+        display: inline-block;
+        height: 28px;
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        line-height: 28px;
+        color: #888;
+        font-size: 13px;
+        vertical-align: top;
+        position: static;
+        padding-left: 30px;
+        &::before{
+            display: inline-block;
+            content: attr(data-title);
+        }
+    }
+    .ace-icon{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        line-height: 24px;
+        width: 26px;
+        text-align: center;
+        font-family: FontAwesome;
+        font-size: 13px;
+        border: 2px solid #FFF;
+        color: #FFF;
+        -webkit-transition: all 0.1s;
+        -o-transition: all 0.1s;
+        transition: all 0.1s;
+        background-color: #D1D1D1;
+    }
+}
+.orange {
+    color: #FF892A!important;
+}
+.fa-spin {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+.bigger-125 {
+    font-size: 125%!important;
 }

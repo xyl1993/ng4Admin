@@ -8,6 +8,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { ActivityRoutingModule } from './activity-routing.module';
 //form
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FileSelectDirective } from 'ng2-file-upload';
 import {CommonModule } from '@angular/common';
 // Modal Component
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -33,6 +34,7 @@ import {AppServer} from "../../util/app.server";
     CKEditorModule
   ],
   declarations: [
+    FileSelectDirective,
     ListComponent,
     EditComponent,
     EntryComponent

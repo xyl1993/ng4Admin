@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http,Headers} from "@angular/http";
+import {apiConfig} from '../global/apiConfig';
 import { config } from '../global/config';
 /**
  * 全局http请求,添加headers等过滤操作
@@ -23,7 +24,7 @@ export class AppServer {
   httpGet(url) {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.get(config.base_api_host+'/'+url, {
+    return this.http.get(apiConfig.base_api_host+url, {
       headers: headers
     });
   }
@@ -31,7 +32,7 @@ export class AppServer {
   httpPost(url, data) {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.post(config.base_api_host+'/'+url, data, {
+    return this.http.post(apiConfig.base_api_host+url, data, {
       headers: headers
     });
   }

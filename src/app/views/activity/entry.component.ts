@@ -6,6 +6,7 @@ import {config} from '../../global/config';
 import { defineLocale } from 'ngx-bootstrap/bs-moment';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { zhCn } from 'ngx-bootstrap/locale';
+
 @Component({
   templateUrl: 'entry.component.html',
   providers: [ActivityService],

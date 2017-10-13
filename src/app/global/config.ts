@@ -1,9 +1,12 @@
+export const activityConfig={
+    defaultImage:'http://olo1p0s1z.bkt.clouddn.com/1.jpg',
+}
+
 export const config =  {
     token : "EoNAuKmc34wpj9cTYKK1dVE3yE8=",
     segmentSize : 10,
     currentPage:1,
     startFrom : 1,
-    base_api_host:"/SignManage",               //http://192.168.60.136:8080/platform
     custom_master_id:[1,464,128],//定制菜单显示人的ID集合
     role_fun:[
         {

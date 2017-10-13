@@ -29,47 +29,42 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <strong>活动列表</strong>    
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>活动列表</strong>
+            </div>
+            <div class="card-block">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>活动名称</th>
+                            <th>活动类型</th>
+                            <th>报名人数</th>
+                            <th>活动时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of acvityList;index as i">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.number}}</td>
+                            <td>
+                                <span class="tag tag-success">{{item.beginTime|date:'yyyy-MM-dd hh:mm'}}至{{item.endTime|date:'yyyy-MM-dd hh:mm'}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination-box" shark-pager [gopage]=false [currentPage]="pagination.currentPage" [segmentSize]="pagination.segmentSize" [totalPage]="pagination.totalPage" (onPageChanged)="getInfoList($event);">
                 </div>
-                <div class="card-block">
-                    <table class="table table-bordered table-striped table-condensed">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>活动名称</th>
-                                <th>活动类型</th>
-                                <th>报名人数</th>
-                                <th>活动时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of acvityList;index as i">
-                                <td>{{i+1}}</td>
-                                <td>{{item.title}}</td>
-                                <td>{{item.type}}</td>
-                                <td>{{item.number}}</td>
-                                <td>
-                                    <span class="tag tag-success">{{item.beginTime|date:'yyyy-MM-dd hh:mm'}}至{{item.endTime|date:'yyyy-MM-dd hh:mm'}}</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="pagination-box" shark-pager 
-                        [gopage] = false
-                        [currentPage]="pagination.currentPage" 
-                        [segmentSize]="pagination.segmentSize"
-                        [totalPage]="pagination.totalPage" 
-                        (onPageChanged)="getInfoList($event);" 
-                    >
-                    </div>
-                    <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
-                </div>
+                <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
             </div>
         </div>
-        <!--/col-->
     </div>
+    <!--/col-->
 </div>
