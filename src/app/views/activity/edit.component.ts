@@ -38,6 +38,10 @@ export class EditComponent {
   public shareUploader:FileUploader = new FileUploader(fileConfig);
 
   constructor(public activityService: ActivityService) {
+    
+  }
+
+  ngOnInit():void{
     var that = this;
     that.uploader.onBeforeUploadItem = (item)=>{
       that.activityDefault.hotImgLoading = true;
@@ -63,10 +67,6 @@ export class EditComponent {
         that.activityDefault.shareImgLoading = false;
       }
     }
-  }
-
-  ngOnInit():void{
-
   }
 
   loadMoreOption():void{

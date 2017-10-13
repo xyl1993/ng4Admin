@@ -29,7 +29,12 @@ export class EntryComponent {
 
   ngOnInit():void{
     defineLocale('zh-cn',zhCn);
-    this.bsConfig = Object.assign({}, {locale: this.locale});
+    this.bsConfig = Object.assign({}, {
+      locale: this.locale,
+      showWeekNumbers:false,
+      isDisabled:false,
+      dateInputFormat:'YYYY/MM/DD'
+    });
     let initObj = {
       data:{
         page:1
