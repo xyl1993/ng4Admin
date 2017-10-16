@@ -11,11 +11,23 @@
             </div>
             <div class="col-md-3 liner-input">
                 <span class="form-lab">开始时间:</span>
-                <input class="form-control" type="text">
+                <input placeholder="" 
+                  type="text"
+                  class="form-control"
+                  bsDatepicker
+                  #dp="bsDatepicker"
+                  [bsConfig]="bsConfig"
+                >
             </div>
             <div class="col-md-3 liner-input">
                 <span class="form-lab">结束时间:</span>
-                <input class="form-control" type="text">
+                <input placeholder="" 
+                  type="text"
+                  class="form-control"
+                  bsDatepicker
+                  #dp="bsDatepicker"
+                  [bsConfig]="bsConfig"
+                >
             </div>
             <div class="col-md-3 liner-input">
                 <span class="form-lab">活动名称:</span>
@@ -46,6 +58,8 @@
                             <th>活动类型</th>
                             <th>报名人数</th>
                             <th>活动时间</th>
+                            <th>设置</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,14 +71,75 @@
                             <td>
                                 <span class="tag tag-success">{{item.beginTime|date:'yyyy-MM-dd hh:mm'}}至{{item.endTime|date:'yyyy-MM-dd hh:mm'}}</span>
                             </td>
+                            <td class="center">
+                                <button (click)="myModal.show()" class="btn btn-sm btn-info" title="设置背景墙">
+                                    <i class="fa fa-picture-o"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" title="设置广告语">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                                <button class="btn btn-sm btn-success" title="设置中奖广告语">
+                                    <i class="fa fa-calendar-o"></i>
+                                </button>
+                                <button class="btn btn-sm btn-purple" title="设置背景图片">
+                                    <i class="fa fa-file-image-o"></i>
+                                </button>
+                            </td>
+                            <td class="center">
+                                <button class="btn btn-sm btn-success" title="编辑">
+                                    <i class="fa fa-picture-o"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary" title="删除">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                                <button class="btn btn-sm btn-warning" title="设置奖项">
+                                    <i class="fa fa-rebel"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary" title="签到二维码">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="pagination-box" shark-pager [gopage]=false [currentPage]="pagination.currentPage" [segmentSize]="pagination.segmentSize" [totalPage]="pagination.totalPage" (onPageChanged)="getInfoList($event);">
-                </div>
+                <pagination 
+                    [maxSize]="pagination.maxSize" 
+                    [totalItems]="bigTotalItems"
+                    [itemsPerPage]="pagination.itemsPerPage"
+                    class="pagination-sm pagination-box"
+                    [boundaryLinks]="pagination.boundaryLinks"
+                    previousText="{{pagination.previousText}}" 
+                    nextText="{{pagination.nextText}}" 
+                    firstText="{{pagination.firstText}}" 
+                    lastText="{{pagination.lastText}}" 
+                    [rotate]="pagination.rotate" 
+                    (pageChanged)="pageChanged($event)">
+                </pagination>
                 <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
             </div>
         </div>
     </div>
     <!--/col-->
 </div>
+<div bsModal #myModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" 
+    aria-labelledby="myModalLabel" aria-hidden="true"
+    (onShow)="handler('onShow', $event)"
+    >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

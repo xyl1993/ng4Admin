@@ -2,19 +2,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SharkModule } from '@ntesmail/shark-angular2';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
-// Components Routing
-import { ActivityRoutingModule } from './activity-routing.module';
-//form
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { FileSelectDirective } from 'ng2-file-upload';
 import {CommonModule } from '@angular/common';
-// Modal Component
-import { ModalModule } from 'ngx-bootstrap/modal';
-// Tabs Component
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { FileSelectDirective } from 'ng2-file-upload';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { SelectModule } from 'ng2-select';
+
+import { ActivityRoutingModule } from './activity-routing.module';
 import { ListComponent } from './list.component';
 import { EditComponent } from './edit.component';
 import { EntryComponent } from './entry.component';
@@ -26,7 +27,9 @@ import {AppServer} from "../../util/app.server";
     ModalModule.forRoot(),
     ToastModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     TabsModule,
+    SelectModule,
     HttpModule,
     CommonModule,
     SharkModule,

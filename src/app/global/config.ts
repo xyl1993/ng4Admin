@@ -1,12 +1,20 @@
 export const activityConfig={
     defaultImage:'http://olo1p0s1z.bkt.clouddn.com/1.jpg',
 }
-
+export const PaginationConfig ={
+    // bigTotalItems:175,  //总条数.页面设置       
+    maxSize: 5,
+    itemsPerPage: 10,           //一页十条
+    boundaryLinks: true,        //if false first and last buttons will be hidden
+    directionLinks: true,       //if false previous and next buttons will be hidden
+    firstText: '&laquo;',
+    previousText: '&lsaquo;',
+    nextText: '&rsaquo;',
+    lastText: '&raquo;',
+    pageBtnClass: '',
+    rotate: true                  //if true current page will in the middle of pages list
+}
 export const config =  {
-    token : "EoNAuKmc34wpj9cTYKK1dVE3yE8=",
-    segmentSize : 10,
-    currentPage:1,
-    startFrom : 1,
     custom_master_id:[1,464,128],//定制菜单显示人的ID集合
     role_fun:[
         {

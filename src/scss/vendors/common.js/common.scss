@@ -7,6 +7,14 @@
 .liner-input{
     padding-left: 91px;
 }
+.btn-info,.btn-warning{
+    color: #fff !important;
+}
+.btn-purple, .btn-purple:focus, .btn-purple.focus {
+    color: #fff;
+    background-color: #9585BF !important;
+    border-color: #9585BF;
+}
 .height-full{
     height: 100%;
 }
@@ -46,6 +54,10 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+.no-padding{
+    padding: 0;
+}
+
 .pagination-box{
     display: flex;
     justify-content: flex-end;
@@ -55,7 +67,19 @@
     padding-top: 7px;
     width: 80px;
 }
-
+.ui-select-match .btn-secondary{
+   background: transparent;
+   border-color:#c2cfd6;
+   color: #3e515b;
+   &:focus{
+       box-shadow:none;
+   }
+   &:hover{
+    background: transparent;
+    border-color:#c2cfd6;
+    color: #3e515b;
+   }
+}
 //aceadmin 组件
 input[type=checkbox].ace,
 input[type=radio].ace

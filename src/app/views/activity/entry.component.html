@@ -6,9 +6,8 @@
         <div class="form-group row">
             <div class="col-md-3 liner-input">
                 <span class="form-lab">开始时间:</span>
-                <input placeholder="Datepicker" 
+                <input placeholder="" 
                   type="text"
-                  [isDisabled]=true
                   class="form-control"
                   bsDatepicker
                   #dp="bsDatepicker"
@@ -17,7 +16,13 @@
             </div>
             <div class="col-md-3 liner-input">
                 <span class="form-lab">结束时间:</span>
-                <input class="form-control" type="text">
+                <input placeholder="" 
+                  type="text"
+                  class="form-control"
+                  bsDatepicker
+                  #dp="bsDatepicker"
+                  [bsConfig]="bsConfig"
+                >
             </div>
             <div class="col-md-3 liner-input">
                 <span class="form-lab">活动名称:</span>
@@ -65,21 +70,25 @@
                                         <i class="icon-social-dropbox"></i>
                                     </button>
                                     <button class="btn btn-sm btn-primary" title="签到二维码">
-                                        <i class="fa fa-qrcode"></i>
+                                        <i class="iconfont icon-chakanerweimaceshi"></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="pagination-box" shark-pager 
-                        [gopage] = false
-                        [currentPage]="pagination.currentPage" 
-                        [segmentSize]="pagination.segmentSize"
-                        [totalPage]="pagination.totalPage" 
-                        (onPageChanged)="getInfoList($event);" 
-                    >
-                    </div>
-                    <!--<twbs-pagination (selectPage)='getInfoList($event)'></twbs-pagination>-->
+                    <pagination 
+                        [maxSize]="pagination.maxSize" 
+                        [totalItems]="bigTotalItems"
+                        [itemsPerPage]="pagination.itemsPerPage"
+                        class="pagination-sm pagination-box"
+                        [boundaryLinks]="pagination.boundaryLinks"
+                        previousText="{{pagination.previousText}}" 
+                        nextText="{{pagination.nextText}}" 
+                        firstText="{{pagination.firstText}}" 
+                        lastText="{{pagination.lastText}}" 
+                        [rotate]="pagination.rotate" 
+                        (pageChanged)="pageChanged($event)">
+                    </pagination>
                 </div>
             </div>
         </div>

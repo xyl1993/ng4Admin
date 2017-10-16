@@ -1,9 +1,13 @@
 import { Component,ViewChild,ViewContainerRef } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
+import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+//ng2日期控件
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { zhCn } from 'ngx-bootstrap/locale';
+//end
 import {ActivityService} from './activity.service';
-
-import {config} from '../../global/config';
+import {config,PaginationConfig} from '../../global/config';
 @Component({
   templateUrl: 'list.component.html',
   providers: [ActivityService],
@@ -17,44 +21,50 @@ export class ListComponent {
   // paginatinEmit={
   //   ifInit:true
   // };
-  
+  public myModal;
+
   private admin = JSON.parse(sessionStorage.getItem('admin'));
+  bsConfig: Partial<BsDatepickerConfig>;
 
   public acvityList = [];
-
-  public pagination = {
-    segmentSize:config.segmentSize,
-    currentPage:config.currentPage,
-    totalPage:0
-  }
+  public bigTotalItems;
+  public pagination = PaginationConfig;
 
   constructor(public toastr: ToastsManager,vcr: ViewContainerRef,public activityService: ActivityService) { 
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit():void{
-    let initObj = {
-      data:{
-        page:1
-      }
-    }
-    this.getInfoList(initObj);
+    //日期初始化
+    defineLocale('zh-cn',zhCn);
+    this.bsConfig = Object.assign({}, {
+      locale: 'zh-cn',
+      showWeekNumbers:false,
+      isDisabled:true,
+      dateInputFormat:'YYYY-MM-DD'
+    });
+    
+    this.getInfoList(1);
   }
-
+  public pageChanged(event:any):void {
+    this.getInfoList(event.page);
+  }
   // 事件处理函数
-  getInfoList(e) {
+  getInfoList(page):void {
     let _this = this;
-    let param = 'currentPage='+e.data.page+'&sysId='+_this.admin.id+'&keyword=';
+    let param = 'currentPage='+page+'&sysId='+_this.admin.id+'&keyword=';
     _this.activityService.selectActivityList(param).then((res)=>{
       if(res.code === 200){
         _this.acvityList = res.data.list;
-        //初始化分页插件
-        _this.pagination.totalPage = res.data.totalPage;
+        _this.bigTotalItems = res.data.totalPage;
       }
     })
   }
 
-  showSuccess() {
+  public showSuccess() {
     this.toastr.success('You are awesome!', 'Success!');
+  }
+  public handler(type: string, $event: ModalDirective) {
+    console.log(type);
   }
 }

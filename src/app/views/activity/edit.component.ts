@@ -2,9 +2,7 @@ import { Component,ViewChild, } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 
 import {ActivityService} from './activity.service';
-
 import {signOptionList} from './activity.data';
-
 import {fileConfig} from '../../global/fileConfig';
 import {ckConfig} from '../../global/ckeditorConfig';
 import { activityConfig } from '../../global/config';
@@ -14,7 +12,13 @@ import { activityConfig } from '../../global/config';
   providers: [ActivityService],
 })
 export class EditComponent {
-
+  public selectTypeArr = {
+    items:[{text:"bar",id:"1"},{text:"ttf",id:"2"}],
+    defaultItems:[{text:"bar",id:"1"}],
+    disabled:false
+  }
+  public items:Array<Object> = [{text:"bar",id:"1"},{text:"ttf",id:"2"}];
+  public defaultItems:Array<Object> = [{text:"bar",id:"1"}];
   public signOptionList = signOptionList
   public ckConfig = ckConfig;
   public moreOptionStatus = false;
@@ -72,4 +76,11 @@ export class EditComponent {
   loadMoreOption():void{
     this.moreOptionStatus = !this.moreOptionStatus;
   }
+
+  private disabled:boolean = false;
+ 
+  public selected(value:any):void {
+    console.log('Selected value is: ', value);
+  }
+
 }
